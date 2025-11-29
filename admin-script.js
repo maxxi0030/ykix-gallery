@@ -16,7 +16,7 @@ let currentUser = null;
         
         if (error || !user) {
             console.log('❌ Неавторизован, редирект...');
-            window.location.replace('/inedx.html');
+            window.location.replace('/index.html');
             throw new Error('Unauthorized');
         }
         
@@ -28,7 +28,7 @@ let currentUser = null;
         
     } catch (err) {
         console.error('Ошибка авторизации:', err);
-        window.location.replace('/inedx.html');
+        window.location.replace('/index.html');
     }
 })();
 
@@ -53,7 +53,7 @@ function resetSessionTimeout() {
     sessionTimeout = setTimeout(async () => {
         alert('⏰ Сессия истекла. Войдите заново.');
         await supabase.auth.signOut();
-        window.location.replace('/inedx.html');
+        window.location.replace('/index.html');
     }, SESSION_DURATION);
 }
 
@@ -61,7 +61,7 @@ async function checkAuth() {
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {
-        window.location.href = '/inedx.html';
+        window.location.href = '/index.html';
         return;
     }
     
@@ -77,7 +77,7 @@ checkAuth();
 
 // для перехода на мейн страницу
 adminFont.addEventListener('click', function() {
-    window.location.href = 'inedx.html';
+    window.location.href = 'index.html';
 
 });
 
