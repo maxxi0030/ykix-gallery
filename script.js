@@ -16,6 +16,7 @@ let loginAttempts = parseInt(localStorage.getItem('loginAttempts')) || 0;
 const MAX_ATTEMPTS = 5;
 let lockoutTime = parseInt(localStorage.getItem('lockoutTime')) || null;
 
+import './config.js'
 
 ykixButton.addEventListener('click', function() {
     setTimeout(function() { location.reload();
