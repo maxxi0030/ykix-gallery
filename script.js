@@ -1,5 +1,5 @@
 // JS НА МЕЙН 
-
+const supabase = window.supabaseClient
 const adminButton = document.querySelector('.admin-button');
 const ykixButton = document.querySelector('.font');
 const closeButton = document.querySelector('#cancelButton');
