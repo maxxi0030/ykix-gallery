@@ -230,10 +230,6 @@ main.add-field.dragover{
     z-index: 1001;
 
     /* в мобильном выглядит очень плохо. мб оишбка из за того то что мы вырываем из потока..  */
-
-
-
-
 }
 
 .delete-photo-btn:hover {
@@ -347,7 +343,6 @@ main.add-field.dragover{
         opacity: 1;
     }
 }
-
 
 
 
