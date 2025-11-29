@@ -133,7 +133,7 @@ async function validateInputs(){
         localStorage.removeItem('lockoutTime');
 
         console.log('Успешный вход!', data);
-        window.location.href = '/admin.html';
+        window.location.href = 'admin.html';
         }
 
 
