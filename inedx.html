@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ykix</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="site-img/kittyicon.png">
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <header>
+
+        <div class="font">
+            <img src="site-img/font2.png" alt="text-main">
+        </div>
+
+        <button class="admin-button">
+            <img src="site-img/lock1.png" alt="Вход" class="close">
+            <img src="site-img/lock-open.png" alt="Вход" class="open">
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <div id="main-gallery">
+            <div class="list">
+        
+            </div>
+        </div>
+
+    </main>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+
+            <button class="close-button" id="cancelButton">&times;</button>
+
+            <div class="font-admin">
+                <img src="site-img/font2.png" alt="text-modal">
+            </div>
+
+            <!-- autocomplete="off" убрал баг со сбросом стили рамки из за автозаполения -->
+            <input type="text" id="loginInput" placeholder="user" autocomplete="off" >
+            <input type="password" id="passwordInput" placeholder="password">
+
+            <div class="modal-buttons">
+                <button id="loginButton" type="submit">Login</button>
+            </div>
+
+        </div>
+    </div>
+
+        <!-- МОДАЛЬНОЕ ОКНО С ИНФОЙ -->
+    <div class="photo-modal" id="photoModal">
+        <div class="photo-modal-content">
+
+            <div class="photo-modal-left">
+                <img id="modalImage" src="" alt="photo">
+            </div>
+
+            <div class="photo-modal-right">
+                <button class="close-modal-btn" id="closePhotoModal">&times;</button>
+                
+                <div class="photo-info">
+                    <!-- дата добавления -->
+                    <div class="photo-date">
+                    <span class="date-label">Added:</span>
+                    <span id="photoDate">-</span>
+                </div>
+                </div>    
+            
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ykix. All rights reserved.</p>
+    </footer>    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

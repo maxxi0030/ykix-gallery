@@ -1,0 +1,405 @@
+/* СТИЛЬ ДЛЯ АДМИНКИ */
+
+
+/* САЙТ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #161616;
+    /* /* background-color: rgb(31, 31, 31); прикольный */
+}
+
+header {
+    display: flex;
+    align-items: center;
+
+    /* 30px сверху/снизу, 50px слева/справа */
+    padding: 20px 20px 30px 20px;
+
+}
+
+.admin-font {
+    /* смена размера картинки-текста */
+    height: 90px; 
+    cursor: pointer;
+}
+
+.admin-font img {
+    height: 100%;
+    width: auto;
+}
+
+.admin-font:hover {
+    transform: translateY(-3px); /* поднимаем на 5 пикселей вверх */
+}
+
+
+/* ГАЛЕРЕЯ (тупо перенос) */
+.list {
+    column-count: 4;
+    /* columns: 300px; */
+    column-gap: 1rem;  /*отступы между картинками */
+    padding: 0.7rem;
+}
+
+.items {
+    margin-bottom: 1rem; /*отступы между картинками снизу */
+}
+
+.items img {
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+    .list {
+        column-count: 3;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .list {
+        column-count: 2;
+    }
+}
+
+.items {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.items:hover {
+    transform: scale(0.95); /* Сжимается на 5% */
+}
+
+
+/* ========================================
+   КАРТОЧКА "ДОБАВИТЬ ФОТО"
+======================================== */
+
+.add-field {
+    margin: 30px;
+
+    background: transparent;
+    border: 2px dashed rgb(212, 212, 212);;
+    border-radius: 10px;
+
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.add-field:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: #ff7a7ab5;
+}
+
+.add-photo-label {
+    text-align: center;
+    color: rgb(212, 212, 212);
+    cursor: pointer;
+    width: 100%;
+    padding: 40px;
+}
+
+.plus-icon {
+    font-size: 50px;
+}
+
+main.add-field.dragover{
+    background-color: #fff;
+}
+
+.add-field.dragover {
+    border-color: #ff7a7ab5;
+    transform: scale(1.02);
+}
+
+
+/* ========================================
+   МОДАЛЬНОЕ ОКНО ДЛЯ ФОТО
+======================================== */
+
+.photo-modal {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+
+    display: none;
+
+}
+
+.photo-modal-content {
+    position: relative;
+    background-color: #999999a3;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 1000px; /* Увеличиваем максимальную ширину */
+    width: 95%;
+    max-height: 90vh; /* Ограничиваем по высоте */
+
+    /* overflow-y: auto; */
+
+
+
+     /* ВАЖНО: используем Grid */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* две колонки одинаковой ширины */
+    gap: 30px; /* расстояние между колонками */
+    align-items: start; /* выравниваем по верху */
+
+
+}
+
+.photo-modal-left {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-modal-left img {
+    width: 100%;
+    height: auto;
+
+    max-height: 70vh; /* Фото занимает 70% высоты экрана */
+    object-fit: contain; /* Вся фотка видна */
+    border-radius: 8px;
+    cursor: zoom-in; /* Показываем, что можно кликнуть */
+    transition: transform 0.3s ease;
+}
+
+
+.photo-modal-right {
+    padding-top: 20px; /* отступ сверху для контента */
+}
+
+/* кнопка закрыть */
+.close-modal-btn {
+    position: absolute; /* вырываем из потока */
+    top: 10px;
+    right: 10px;
+
+    width: 25px;
+    height: 25px;
+
+    padding: 0; /* Убираем padding */
+    margin: 0;  /* Убираем margin */
+    
+    line-height: 1; 
+
+    background-color: transparent;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 4px;
+
+    font-size: 21px;
+
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.delete-photo-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 1001;
+
+    /* в мобильном выглядит очень плохо. мб оишбка из за того то что мы вырываем из потока..  */
+
+
+
+
+}
+
+.delete-photo-btn:hover {
+    transform: translateY(-3px);
+}
+
+.close-modal-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+/* НОВОЕ МОДАЛЬНОЕ ОКНО ПОДТВЕРЖДЕНИЯ УДАЛЕНИЯ */
+
+/* основа */
+.delete-confirm-modal {
+    display: none;
+    position: fixed;
+    z-index: 1002;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+/* расположение когда активно  */
+.delete-confirm-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* основа */
+.delete-modal-content {
+    background-color: #999999ee;
+    border-radius: 10px;
+    padding: 24px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s;
+        }
+/* хедер */
+    .delete-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+/* иконка варининг */
+.warning-icon {
+    width: 48px;
+    height: 48px;
+    background: #fff3e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+/* заглавие */
+.delete-modal-header h2 {
+    font-size: 20px;
+    color: #212121;
+    margin: 0;
+}
+
+/* расположение кнопочек */
+.delete-modal-footer {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-right: 12px;
+}
+/* дизайн кнопочек */
+.modal-btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.btn-cancel {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background: #e0e0e0;
+}
+
+.btn-delete {
+    background: #d32f2f;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #b71c1c;
+}
+
+/* анимация открытия */
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+/* Для телефонов */
+@media (max-width: 768px) {
+    .photo-modal-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+
+        gap: 30px;
+        align-items: start;
+
+        padding: 10px;
+    }
+
+    .photo-modal-right {
+        grid-row: 1;
+    }
+
+    .photo-modal-left {
+        grid-row: 2;
+        max-width: 100%;
+        position: relative;
+    }
+
+    .photo-modal-left img {
+        border-radius: 10px;
+        max-height: 50vh;
+    }
+
+    .delete-photo-btn {
+        position: absolute;
+        top: 40px;    /* Позиционируем от верха */
+        left: 10px;  /* От правого края картинки */
+
+
+        width: 30px;  /* Увеличиваем для мобильных */
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .admin-font {
+    /* смена размера картинки-текста */
+    height: 60px; 
+    cursor: pointer;
+    }
+
+    .admin-font img {
+    height: 100%;
+    width: auto;
+    }
+
+}

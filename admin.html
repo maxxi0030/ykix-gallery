@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="site-img/kittyicon.png">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="admin-font">
+            <img src="site-img/admin-font.png" alt="text-admin">
+        </div>
+    </header>
+
+    <main>
+        <div class="add-field" id="uploadZone"> 
+
+            <label for="fileInput" class="add-photo-label">
+                <div class="plus-icon">+</div>
+            </label>
+
+            <input type="file" id="fileInput" accept="image/*" multiple hidden>
+        </div>
+
+
+        <div class="admin-gallery" id="admin-gallery"> 
+            <div class="list">
+
+            <!-- тут у нас items -->
+
+            <!-- каждому элементу свой уникальный айди -->
+            <!-- <div class="items" data-id="123">
+                <img src="photo.jpg"> -->
+
+        </div>
+
+    </main> 
+
+    <!-- МОДАЛЬНОЕ ОКНО С ИНФОЙ -->
+    <div class="photo-modal" id="photoModal">
+        <div class="photo-modal-content">
+
+            <div class="photo-modal-left">
+                <img id="modalImage" src="" alt="photo">
+            </div>
+
+            <div class="photo-modal-right">
+                <button class="close-modal-btn" id="closePhotoModal">&times;</button>
+                
+                <div class="photo-info">
+                    <p><strong>ID:</strong><span id="photoIdDisplay">-</span></p>
+                </div>    
+            
+                <!-- Кнопка удаления -->
+                <button class="delete-photo-btn" id="deletePhotoBtn">
+                    <img id="deleteButImg" src="site-img/trash.png" alt="deleteIcon">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ПОДТВЕРЖДЕНИЯ УДАЛЕНИЯ -->
+    <div class="delete-confirm-modal" id="deleteConfirmModal">
+        <div class="delete-modal-content">
+            <div class="delete-modal-header">
+                <div class="warning-icon">⚠️</div>
+                <h2>DELETE PHOTO?</h2>
+            </div>
+            <!-- <div class="delete-modal-body"> -->
+                <!-- <p>Are you sure?</p> -->
+            <!-- </div> -->
+            <div class="delete-modal-footer">
+                <button class="modal-btn btn-cancel" id="cancelDeleteBtn">Cancel</button>
+                <button class="modal-btn btn-delete" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="admin-script.js"></script>
+</body>
+</html>

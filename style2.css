@@ -1,0 +1,518 @@
+/* СТИЛЬ ДЛЯ ОСНОВНОЙ СТРАНИЦЫ */
+
+/* ДЛЯ ТЕЛЕФОНОВ */
+
+/* Убирает автоматическую подсветку при тапе на iOS */
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none; /* Запрещает выделение текста */
+}
+
+/* Запрещает iOS менять цвета кнопок/инпутов */
+input,
+button,
+textarea,
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+button {
+    color: inherit; /* Наследует цвет от родителя */
+    background: transparent;
+    border: none;
+}
+
+/* Фикс для Safari на iOS - убирает синий оттенок при тапе */
+input:focus,
+button:focus,
+textarea:focus {
+    outline: none;
+}
+
+/* На мобилке используем active вместо hover */
+@media (hover: none) {
+    .admin-button:hover {
+        transform: none; /* ✅ Отключаем hover на тачскринах */
+    }
+    
+    .admin-button:active {
+        transform: translateY(-5px); /* ✅ Работает при тапе */
+    }
+    
+    .items:hover {
+        transform: none;
+    }
+    
+    .items:active {
+        transform: scale(0.95);
+    }
+}
+
+
+/* ГАЛЕРЕЯ */
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+
+.list {
+    column-count: 4;
+    /* columns: 300px; */
+    column-gap: 1rem;  /*отступы между картинками */
+    padding: 0.7rem;
+}
+
+.items {
+    margin-bottom: 1rem; /*отступы между картинками снизу */
+}
+
+.items img {
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+
+}
+
+@media screen and (max-width: 1000px) {
+    .list {
+        column-count: 3;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .list {
+        column-count: 2;
+    }
+}
+
+
+
+
+/* САЙТ */
+
+body {
+    background-color: #161616;
+}
+
+
+/* justify-content: space-between; если хочешь сделать чтобы просто справа была надпись, а слева будет кнопка входа */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* 30px сверху/снизу, 50px слева/справа */
+    padding: 20px 20px 30px 20px;
+}
+
+.font {
+    /* смена размера картинки-текста */
+    height: 100px; 
+}
+
+.font img {
+    height: 100%;
+    width: auto;
+    cursor:pointer;
+}
+
+.font:hover {
+    transform: translateY(-3px); /* поднимаем на 5 пикселей вверх */
+}
+
+
+
+/* КНОПКА АДМИНА*/
+.admin-button{
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: transparent; /* Полностью прозрачная */
+    cursor: pointer; /* Рука при наведении */
+    transition: all 0.3s 0.4s; /* плавность задержка - именно сюда! */
+}
+
+/* Иконка внутри кнопки */
+.admin-button img {
+    width: 100%; /* Иконка занимает всю ширину кнопки */
+    height: 100%; /* Иконка занимает всю высоту кнопки */
+    /* transition: all 0.3s 0.4s; */
+}
+
+.admin-button:hover {
+    transform: translateY(-5px); /* поднимаем на 5 пикселей вверх */
+}
+
+.close {
+    display: block;
+}
+
+.open{
+    display: none;
+}
+
+.admin-button:hover .close {
+    display: none;
+}
+
+.admin-button:hover .open {
+    display: block;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #161616;
+    /* border-top: 1px dotted #bbbec2; */
+    margin-top: 40px;
+}
+
+footer p {
+    color: #bbbec2; /* Светло-серый */
+}
+
+
+
+/* ---МОДАЛЬНОЕ ОКНО--- */
+.modal {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    display: none; /*в конце!*/
+}
+
+.modal-content {
+    position: relative;
+    background-color: #999999a3;
+    border-radius: 10px;
+
+    padding: 30px 40px;
+}
+
+.font-admin {
+    /* смена размера картинки-текста */
+    height: 100px; 
+}
+
+.font-admin img {
+    height: 100%;
+    width: auto;
+}
+
+
+.font-admin img:hover {
+    transform: translateY(-3px); /* поднимаем на 5 пикселей вверх */
+}
+
+
+
+.modal-content input::placeholder {
+    color: #353434; /* Светло-серый */
+}
+
+.modal-content input {
+    display: block; /* каждый элемент(поле) на новой строке */
+    background: transparent;
+
+    width: 250px;
+    padding: 10px;
+    margin: 10px auto;
+
+    outline: none; /* при нажатии не будет обводки по умолчанию */
+    
+    /* BORDER - рамка вокруг поля */
+    /* 1px = толщина, solid = сплошная линия, #ccc = светло-серый цвет */
+
+    border: 2px solid rgba(35, 35, 35, 0.371);
+    border-radius: 40px;
+
+    padding: 10px 20px;
+}
+
+/* убирает стили автозаполнения (но не везде.. в каждом браузере, к сожалению, по своему, и варианта для всех я еще не нашел..) */
+input:-webkit-autofill {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #000000;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* при ошибках */
+.modal-content.error input {
+    border-color: #790c048f;
+}
+
+/* анимация тряски */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-7px); }
+    20%, 40%, 60%, 80% { transform: translateX(7px); }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+.close-button {
+    position: absolute; /* вырываем из потока */
+    top: 16px;
+    right: 16px;
+
+    width: 25px;
+    height: 25px;
+
+    padding: 0; /* ← Убираем padding */
+    margin: 0;  /* ← Убираем margin */
+    
+    line-height: 1; 
+
+    background-color: transparent;
+    border: 1px solid black;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 4px;
+    font-size: 21px;
+
+    cursor: pointer;
+}
+
+.close-button:hover {
+    transform: translateY(-3px);
+}
+
+/* кнопка логин */
+.modal-buttons button{
+    width: 125px;
+    height: 30px;
+
+    outline: none;
+    border: 1px solid black;
+    font-size: 15px;
+    border-radius: 10px;
+
+    background-color: transparent;
+
+    /* Внутренние отступы кнопки */
+    /* 10px сверху/снизу, 20px слева/справа */
+    /* padding: 10px 50px; */
+
+    /* Внешние отступы между кнопками */
+    /* 10px сверху/снизу, 5px слева/справа */
+    /* margin: 3px 5px; */
+
+    cursor: pointer; /* (показывает что это кликабельно) */
+    transition: transform 0.2s ease;
+}
+
+/* именно на кнопку ховер */
+.modal-buttons button:hover{
+    transform: translateY(-2px);
+}
+
+/* МОДАЛКА С ИНФОЙ */
+.photo-modal {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+
+    display: none;
+
+}
+.photo-modal-content {
+    position: relative;
+    background-color: #999999a3;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 1000px; /* Увеличиваем максимальную ширину */
+    width: 95%;
+    max-height: 90vh; /* Ограничиваем по высоте */
+
+    /* overflow-y: auto; */
+
+
+
+     /* ВАЖНО: используем Grid */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* две колонки одинаковой ширины */
+    gap: 30px; /* расстояние между колонками */
+    align-items: start; /* выравниваем по верху */
+
+
+}
+
+/* .photo-modal-left {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* .photo-modal-left img {
+    width: 100%;
+    height: auto;
+
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 15px;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+} */
+
+/* рабочий варик где края закругленные */
+.photo-modal-left {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* ✅ ВАЖНО: обрезает лишнее */
+    border-radius: 15px; /* ✅ Закругляем сам контейнер */
+    background: transparent; /* ✅ Прозрачный фон */
+}
+
+.photo-modal-left img {
+    width: auto; /* ✅ Изменил с 100% */
+    height: auto;
+    max-width: 100%; /* ✅ Добавил */
+    max-height: 70vh;
+    object-fit: contain;
+    display: block; /* ✅ Убирает лишние отступы */
+    border-radius: 15px; /* ✅ Закругляем саму картинку */
+}
+
+.photo-modal-right {
+    padding-top: 20px; /* отступ сверху для контента */
+}
+
+@media (max-width: 768px) {
+.photo-modal-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+
+        gap: 20px;
+        align-items: start;
+
+        padding: 10px;
+    }
+
+    .photo-modal-right {
+        grid-row: 1;
+    }
+
+    .photo-modal-left {
+        grid-row: 2;
+        max-width: 100%;
+        position: relative;
+    }
+
+    .photo-modal-left img {
+        border-radius: 10px;
+        /* max-height: 50vh; */
+    }
+}
+
+
+
+/* дата добавления */
+.photo-date {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 14px;
+    color: #1d1d1d;
+    margin-left: 10px;
+    margin-top: -12px;
+}
+
+.date-label {
+    font-weight: 600;
+    font-family: monospace; /* Моноширинный шрифт для даты */
+    color: #1d1d1d;
+}
+
+#photoDate {
+    font-weight: 600;
+    color: #333;
+    font-family: monospace;
+}
+
+
+/* кнопка закрыть */
+.close-modal-btn {
+    position: absolute; /* вырываем из потока */
+    top: 10px;
+    right: 10px;
+
+    width: 25px;
+    height: 25px;
+
+
+
+    padding: 0;
+    /* margin: auto; */
+    
+    line-height: 1; 
+
+    background-color: transparent;
+    border: 1px solid black;
+
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;    /* центрируем по вертикали */
+    justify-content: center; /* центрируем по горизонтали */
+
+    font-size: 21px;
+
+    cursor: pointer;
+    z-index: 1001;
+
+    transition: all 0.08s 0.08s;
+}
+
+.items {
+    transition: all 0.2s 0.08s;
+    cursor: pointer;
+}
+
+.items:hover {
+    transform: scale(0.95); /* Сжимается на 5% */
+}
+
+.close-modal-btn:hover {
+    transform: translateY(-3px);
+}
