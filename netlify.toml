@@ -15,14 +15,4 @@
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
     Cache-Control = "no-store, no-cache"
-
-[build]
-  publish = "."
-
-[[build.processing]]
-  for = "config.js"
-  [build.processing.replace]
-    values = [
-      { from = "{{ .Env.VITE_SUPABASE_URL }}", to = "$VITE_SUPABASE_URL" },
-      { from = "{{ .Env.VITE_SUPABASE_ANON_KEY }}", to = "$VITE_SUPABASE_ANON_KEY" }
-    ]
+    
