@@ -1,7 +1,7 @@
 // config.js
 
-const supabaseUrl = '{{ .Env.VITE_SUPABASE_URL }}'
-const supabaseKey = '{{ .Env.VITE_SUPABASE_ANON_KEY }}'
+const supabaseUrl = window.SUPABASE_CONFIG?.url || 'https://your-project.supabase.co';
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY || 'fallback_key';
 
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
