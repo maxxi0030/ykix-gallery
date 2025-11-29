@@ -36,11 +36,11 @@ textarea:focus {
 /* На мобилке используем active вместо hover */
 @media (hover: none) {
     .admin-button:hover {
-        transform: none; /* ✅ Отключаем hover на тачскринах */
+        transform: none; /* Отключаем hover на тачскринах */
     }
     
     .admin-button:active {
-        transform: translateY(-5px); /* ✅ Работает при тапе */
+        transform: translateY(-5px); /* Работает при тапе */
     }
     
     .items:hover {
@@ -54,13 +54,6 @@ textarea:focus {
 
 
 /* ГАЛЕРЕЯ */
-
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
-
 
 .list {
     column-count: 4;
@@ -93,14 +86,11 @@ textarea:focus {
 }
 
 
-
-
 /* САЙТ */
 
 body {
     background-color: #161616;
 }
-
 
 /* justify-content: space-between; если хочешь сделать чтобы просто справа была надпись, а слева будет кнопка входа */
 
@@ -109,7 +99,6 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    /* 30px сверху/снизу, 50px слева/справа */
     padding: 20px 20px 30px 20px;
 }
 
@@ -127,7 +116,6 @@ header {
 .font:hover {
     transform: translateY(-3px); /* поднимаем на 5 пикселей вверх */
 }
-
 
 
 /* КНОПКА АДМИНА*/
@@ -226,7 +214,6 @@ footer p {
 }
 
 
-
 .modal-content input::placeholder {
     color: #353434; /* Светло-серый */
 }
@@ -281,8 +268,8 @@ input:-webkit-autofill {
     width: 25px;
     height: 25px;
 
-    padding: 0; /* ← Убираем padding */
-    margin: 0;  /* ← Убираем margin */
+    padding: 0;
+    margin: 0;
     
     line-height: 1; 
 
@@ -399,19 +386,19 @@ input:-webkit-autofill {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* ✅ ВАЖНО: обрезает лишнее */
-    border-radius: 15px; /* ✅ Закругляем сам контейнер */
-    background: transparent; /* ✅ Прозрачный фон */
+    overflow: hidden; /* ВАЖНО: обрезает лишнее */
+    border-radius: 15px; /* Закругляем сам контейнер */
+    background: transparent; /* Прозрачный фон */
 }
 
 .photo-modal-left img {
-    width: auto; /* ✅ Изменил с 100% */
+    width: auto; /* Изменил с 100% */
     height: auto;
-    max-width: 100%; /* ✅ Добавил */
+    max-width: 100%;
     max-height: 70vh;
     object-fit: contain;
-    display: block; /* ✅ Убирает лишние отступы */
-    border-radius: 15px; /* ✅ Закругляем саму картинку */
+    display: block; /* Убирает лишние отступы */
+    border-radius: 15px; /* Закругляем саму картинку */
 }
 
 .photo-modal-right {
@@ -446,7 +433,6 @@ input:-webkit-autofill {
 }
 
 
-
 /* дата добавления */
 .photo-date {
     display: flex;
@@ -479,7 +465,6 @@ input:-webkit-autofill {
 
     width: 25px;
     height: 25px;
-
 
 
     padding: 0;
