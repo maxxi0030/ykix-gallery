@@ -92,7 +92,7 @@ async function validateInputs(){
     // ПРОВЕРКА на верность
 
     // СТАРЫЙ ВАРИАНТ
-    // if (login !== 'admin' || password !== 'a123') {
+    // if (login !== 'admin' || password !== '**********') {
     //     showError(); // Показываем ошибку
     //     return; // Дальше не идем
     // }
@@ -112,7 +112,7 @@ async function validateInputs(){
 
         if (error) {
         // console.error('Ошибка входа:', error);
-        // После 5 попыток - блокировка на 5 минут
+        // После 5 попыток - блокировка на * минут
             loginAttempts++;
             localStorage.setItem('loginAttempts', loginAttempts);
 
@@ -205,7 +205,6 @@ window.addEventListener("load", async function(){
 function addPhotoToGallery(imageUrl, createdAt) {
     const photoCard = document.createElement('div');
     photoCard.className = 'items';
-    // photoCard.innerHTML = `<img src="${imageUrl}" alt="Фото">`;
 
     const img = document.createElement('img');
     img.src = imageUrl;
