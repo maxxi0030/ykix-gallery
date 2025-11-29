@@ -1,5 +1,4 @@
 // JS НА МЕЙН 
-console.log('Supabase:', window.supabaseClient)
 
 const adminButton = document.querySelector('.admin-button');
 const ykixButton = document.querySelector('.font');
