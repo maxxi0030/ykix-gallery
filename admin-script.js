@@ -6,9 +6,8 @@ const adminGallery = document.getElementById("admin-gallery");
 
 const adminFont = document.querySelector('.admin-font');
 
-// ============================================
-// ЗАЩИТА 1: Проверка авторизации при загрузке
-// ============================================
+
+// Проверка авторизации при загрузке
 let currentUser = null;
 
 (async function initAuth() {
@@ -33,11 +32,11 @@ let currentUser = null;
     }
 })();
 
-// ============================================
-// ЗАЩИТА 2: Автоматический выход через 1 час
-// ============================================
+
+// ЗАЩИТА 2: Автоматический выход через час
+
 let sessionTimeout;
-const SESSION_DURATION = 60 * 60 * 1000; // 1 час
+const SESSION_DURATION = 60 * 60 * 1000;
 
 function startSessionTimeout() {
     resetSessionTimeout();
@@ -187,27 +186,6 @@ async function safeFileName(originalName) {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ТЕСТ
-
 // Использование: await uploadFileClean(file);
 
 async function fileToImage(file) {
@@ -238,24 +216,6 @@ async function stripExifClient(file) {
   return newFile;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ЗАГРУЗКА В SUPABASE
 async function uploadToSupabase(file) {
     console.log('Загружаем:', file.name);
@@ -278,7 +238,6 @@ async function uploadToSupabase(file) {
     .from('gallery-images')
     .upload(fileName, cleanedFile);
   // дальше как раньше — получаем publicUrl, записываем в БД
-
     
     if (uploadError) {
         console.error('Ошибка загрузки:', uploadError);
@@ -293,26 +252,11 @@ async function uploadToSupabase(file) {
         .getPublicUrl(fileName);
     
     const imageUrl = urlData.publicUrl;
-    
-    // Сохраняем в базу
-    // const {data: dbData, error: dbError } = await supabase
-    //     .from('photos')
-    //     .insert([{ image_url: imageUrl, file_name: fileName}])
-    //     .select(); // Важно! Возвращает вставленную запись
-
-    // получить текущего пользователя
-    // const { data: { user } } = await supabase.auth.getUser();
-    //     if (!user) {
-    //     alert('Сессия не найдена. Повторите вход.');
-    //     return;
-    // }
-    // const ownerId = user.id;
 
     const { data: dbData, error: dbError } = await supabase
     .from('photos')
     .insert([{ image_url: imageUrl, file_name: fileName}])
     .select();
-
 
     
     if (dbError) {
@@ -335,7 +279,6 @@ function addPhotoToGallery(imageUrl, photoId) {
     photoCard.className = 'items';
     photoCard.setAttribute('data-id', photoId); // Сохраняем ID фото
 
-    // photoCard.innerHTML = `<img src="${imageUrl}" alt="Фото">`;
     const img = document.createElement('img');
     img.src = imageUrl;
     img.alt = 'photo';
