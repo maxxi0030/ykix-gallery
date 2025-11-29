@@ -285,7 +285,7 @@ function addPhotoToGallery(imageUrl, photoId) {
     photoCard.appendChild(img);
 
     const list = adminGallery.querySelector('.list');
-    list.prepend(photoCard);
+    list.append(photoCard);
 }
 
 
